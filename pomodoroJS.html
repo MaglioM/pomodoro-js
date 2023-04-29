@@ -1,9 +1,14 @@
+<!DOCTYPE html>
 <html>
     <title>Pomodoro</title>
     <body>  
         <h1>Reloj pomodoro</h1>
-        <input:number>Trabajo<input>
-        <input:number>Descanso<input>
-        <button>Comenzar</button>
+        <p>Ingrese tiempo:</p>
+        <input type="number" id="tiempoDeTrabajo">Trabajo</input>
+        <input type="number" id="tiempoDeDescanso">Descanso</input>
+        <button type="button" id="btnComenzar" onclick="startTimer()">Comenzar</button>
+        <button type="button" id="btnDetener" hidden="true" onclick="stopTimer()">Detener</button>
+        <p id="tiempoRestante"></p>
+        <script src="PomodoroJS.js"></script>
     </body>
 </html>
