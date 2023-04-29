@@ -2,7 +2,7 @@ let running = false;
 const _btnComenzar = document.getElementById("btnComenzar");
 const _btnDetener = document.getElementById("btnDetener");
 const _tiempoDeTrabajo = document.getElementById("tiempoDeTrabajo");
-const _tiempoRestante = document.getElementById("tiempoRestante");
+const _tiempoDeDescanso = document.getElementById("tiempoDeDescanso");
 
 function sleep(ms){
     return new Promise(resolve => setTimeout(resolve,ms));
@@ -14,17 +14,31 @@ function formatTime(seconds) {
   return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
 
+function getSeconds(element){
+    const time = element.innerHTML;
+    const minutes = parseInt(time.slice(0,2));
+    const seconds = parseInt(time.slice(3,5));
+    return minutes * 60 + seconds;
+}
+
+function controlTime(timeId, isAdding){//if it is not adding, it is subtracting
+    timeElement = document.getElementById(timeId);
+    timeInSeconds = getSeconds(timeElement);
+    newTime = isAdding ? formatTime(timeInSeconds + 60) : formatTime(timeInSeconds - 60);
+    timeElement.innerHTML = newTime;
+}
+
 function switchButtons() {
     _btnDetener.hidden = !_btnDetener.hidden;
     _btnComenzar.hidden = !_btnComenzar.hidden;
 }
 
 async function startTimer(){
-    let tiempoRestante = 60 * _tiempoDeTrabajo.value;
+    let tiempoRestante = getSeconds(_tiempoDeTrabajo);
     switchButtons();
     running = true;
     while (tiempoRestante >= 0 && running){
-        _tiempoRestante.innerHTML = formatTime(tiempoRestante);
+        _tiempoDeTrabajo.innerHTML = formatTime(tiempoRestante);
         await sleep(1000);
         tiempoRestante-= 1;
     }
@@ -36,5 +50,4 @@ async function startTimer(){
 function stopTimer(){
     switchButtons();
     running = false;
-    _tiempoRestante.innerHTML = null;
 }
