@@ -1,6 +1,7 @@
 let running = false;
 const _btnComenzar = document.getElementById("btnComenzar");
 const _btnDetener = document.getElementById("btnDetener");
+const _btnRestart = document.getElementById("btnRestart");
 const _tiempoDeTrabajo = document.getElementById("tiempoDeTrabajo");
 const _tiempoDeDescanso = document.getElementById("tiempoDeDescanso");
 const _rondas = document.getElementById("rondas");
@@ -22,6 +23,11 @@ function getSeconds(element){
     return minutes * 60 + seconds;
 }
 
+function restartTimer(){
+    _tiempoDeTrabajo.innerHTML = "20:00"
+    _tiempoDeDescanso.innerHTML = "20:00"
+}
+
 function controlTime(timeId, isAdding){//if it is not adding, it is subtracting
     timeElement = document.getElementById(timeId);
     timeInSeconds = getSeconds(timeElement);
@@ -32,6 +38,7 @@ function controlTime(timeId, isAdding){//if it is not adding, it is subtracting
 function switchButtons() {
     _btnDetener.hidden = !_btnDetener.hidden;
     _btnComenzar.hidden = !_btnComenzar.hidden;
+    _btnRestart.hidden = _btnComenzar.hidden;//Restart button appearence will always match start button.
 }
 
 async function startTimer(){

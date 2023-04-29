@@ -7,11 +7,11 @@
     <body>  
         <h1>Reloj pomodoro</h1>
 
-        <label for="tiempoDeTrabajo">Tiempo de trabajo:</label> <p id="tiempoDeTrabajo">00:02</p>
+        <label for="tiempoDeTrabajo">Tiempo de trabajo:</label> <p id="tiempoDeTrabajo">20:00</p>
         <input type="button" onclick="controlTime('tiempoDeTrabajo', true)">+</input>
         <input type="button"onclick="controlTime('tiempoDeTrabajo', false)">-</input>
         <br>
-        <label for="tiempoDeDescanso">Tiempo de descanso:</label> <p id="tiempoDeDescanso">00:02</p>
+        <label for="tiempoDeDescanso">Tiempo de descanso:</label> <p id="tiempoDeDescanso">05:00</p>
         <input type="button" onclick="controlTime('tiempoDeDescanso', true)">+</input>
         <input type="button"onclick="controlTime('tiempoDeDescanso', false)">-</input>
         <br>
@@ -19,6 +19,7 @@
         <br>
         <button type="button" id="btnComenzar" onclick="startTimer()">Comenzar</button>
         <button type="button" id="btnDetener" hidden="true" onclick="stopTimer()">Detener</button>
+        <button type="button" id="btnRestart" onclick="restartTimer()">Reiniciar</button>
         <script src="script.js"></script>
     </body>
 </html>
