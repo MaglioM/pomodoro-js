@@ -1,0 +1,56 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F0F0F0;
+  text-align: center;
+}
+
+* {
+  padding: 5px;
+}
+
+h1 {
+  color: #333333;
+}
+
+p {
+  color: #666666;
+}
+
+input[type="number"] {
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  background-color: #f7f7f7;
+  border: none;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #336699;
+  color: #FFFFFF;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:disabled {
+  background-color: #CCCCCC;
+  cursor: default;
+}
+
+#btnDetener {
+  margin-left: 10px;
+}
+
+#tiempoRestante {
+  font-size: 64px;
+  color: #333333;
+  margin: 0;
+  padding: 0;
+}
+
