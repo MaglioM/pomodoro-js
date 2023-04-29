@@ -3,6 +3,7 @@ const _btnComenzar = document.getElementById("btnComenzar");
 const _btnDetener = document.getElementById("btnDetener");
 const _tiempoDeTrabajo = document.getElementById("tiempoDeTrabajo");
 const _tiempoDeDescanso = document.getElementById("tiempoDeDescanso");
+const _rondas = document.getElementById("rondas");
 
 function sleep(ms){
     return new Promise(resolve => setTimeout(resolve,ms));
@@ -34,15 +35,27 @@ function switchButtons() {
 }
 
 async function startTimer(){
-    let tiempoRestante = getSeconds(_tiempoDeTrabajo);
+    const rondas = _rondas.innerHTML;
+    const tiempoDeTrabajo = getSeconds(_tiempoDeTrabajo);
+    const tiempoDeDescanso = getSeconds(_tiempoDeDescanso);
+    let tiempoRestante;
     switchButtons();
     running = true;
-    while (tiempoRestante >= 0 && running){
-        _tiempoDeTrabajo.innerHTML = formatTime(tiempoRestante);
-        await sleep(1000);
-        tiempoRestante-= 1;
+    for (let ronda = 0; ronda < rondas; ronda++){
+        tiempoRestante = tiempoDeTrabajo;
+        while (tiempoRestante >= 0 && running){//Working time starts
+            _tiempoDeTrabajo.innerHTML = formatTime(tiempoRestante);
+            await sleep(1000);
+            tiempoRestante-= 1;
+        }
+        tiempoRestante = tiempoDeDescanso;
+        while (tiempoRestante >= 0 && running){//Resting time starts
+            _tiempoDeDescanso.innerHTML = formatTime(tiempoRestante);
+            await sleep(1000);
+            tiempoRestante-= 1;
+        }
     }
-    if (running) {//Enters statement only if the countdown completed and not if it was stopped. This way it does not run twice.
+    if (running) {//Enters statement only if the countdown was completed and not if it was stopped. This way it does not run twice.
         stopTimer();
     }
 }
