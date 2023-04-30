@@ -17,22 +17,34 @@ function formatTime(seconds) {
   return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
 
-function getSeconds(element){
-    const time = element.innerHTML;
+function getSeconds(time){
     const minutes = parseInt(time.slice(0,2));
     const seconds = parseInt(time.slice(3,5));
     return minutes * 60 + seconds;
 }
 
 function restartTimer(){
-    _tiempoDeTrabajo.innerHTML = "20:00"
-    _tiempoDeDescanso.innerHTML = "05:00"
+    _tiempoDeTrabajo.innerHTML = "20:00";
+    _tiempoDeDescanso.innerHTML = "05:00";
+    _rondas.innerHTML = 3;
 }
 
 function controlTime(timeElement, isAdding){//if it is not adding, it is subtracting
-    timeInSeconds = getSeconds(timeElement);
+    timeInSeconds = getSeconds(timeElement.innerHTML);
     newTime = isAdding ? formatTime(timeInSeconds + 60) : formatTime(timeInSeconds - 60);
-    timeElement.innerHTML = newTime;
+    if (getSeconds(newTime) >= 0){//avoids buttons to set negative time values
+        timeElement.innerHTML = newTime;
+    }
+}
+
+function controlRounds(isAdding){//if it is not adding, it is subtracting
+    let currentRounds = parseInt(_rondas.innerHTML);
+    if (isAdding){
+        _rondas.innerHTML = currentRounds + 1
+    }
+    else if (currentRounds > 1){
+        _rondas.innerHTML = currentRounds - 1
+    }
 }
 
 function switchButtons() {
@@ -46,8 +58,8 @@ function switchButtons() {
 
 async function startTimer(){
     const rondas = _rondas.innerHTML;
-    const tiempoDeTrabajo = getSeconds(_tiempoDeTrabajo);
-    const tiempoDeDescanso = getSeconds(_tiempoDeDescanso);
+    const tiempoDeTrabajo = getSeconds(_tiempoDeTrabajo.innerHTML);
+    const tiempoDeDescanso = getSeconds(_tiempoDeDescanso.innerHTML);
     let tiempoRestante;
     switchButtons();
     running = true;
@@ -56,7 +68,7 @@ async function startTimer(){
         while (tiempoRestante >= 0 && running){//Working time starts
             _tiempoDeTrabajo.innerHTML = formatTime(tiempoRestante);
             await sleep(1000);
-            tiempoRestante-= 1;
+            tiempoRestante -= 1;
         }
         tiempoRestante = tiempoDeDescanso;
         while (tiempoRestante >= 0 && running){//Resting time starts
@@ -64,6 +76,7 @@ async function startTimer(){
             await sleep(1000);
             tiempoRestante-= 1;
         }
+        _rondas.innerHTML -= 1;
     }
     if (running) {//Enters statement only if the countdown was completed and not if it was stopped. This way it does not run twice.
         stopTimer();
