@@ -84,8 +84,8 @@ async function startTimer(){
         }
         if (running){
             bellSound.play();
+            _rondas.innerHTML -= 1;
         }
-        _rondas.innerHTML -= 1;
     }
     if (running) {//Enters statement only if the countdown was completed and not if it was stopped. This way it does not run twice.
         stopTimer();
