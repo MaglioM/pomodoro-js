@@ -10,24 +10,22 @@ body {
 
 h1 {
   font-size: 48px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 p {
-  font-size: 24px;
-  line-height: 1.5;
+  font-size: 32px;
+  line-height: 1;
 }
 
 a {
-  font-size: 24px;
+  font-size: 32px;
   color: #f3e5b1; /* Beige más amarillento */
-  text-decoration: none;
 }
 
 label {
-  font-size: 24px;
+  font-size: 32px;
   display: block;
-  margin-bottom: 20px;
 }
 
 /* Estilos del encabezado */
@@ -53,7 +51,7 @@ button {
   background-color: #123152;
   color: #f3e5b1; /* Beige más amarillento */
   border: none;
-  padding: 20px 40px;
+  padding: 10px 20px;
   font-size: 24px;
   cursor: pointer;
   margin-right: 10px;
@@ -61,13 +59,14 @@ button {
 
 /* Estilos de los botones de control de tiempo */
 .btnControlTime {
-  font-size: 24px;
-  padding: 15px 30px;
+  font-size: 32px;
+  padding: 10px 20px;
+  margin-bottom: 50px;
 }
 
 /* Estilos del enlace al código del proyecto */
 a[href^="https://github.com/"] {
-  color: #f3e5b1; /* Beige más amarillento */
+  color: orange; /* Beige más amarillento */
 }
 
 /* Estilos específicos de la página "Pomodoro" */
@@ -79,8 +78,3 @@ a[href^="https://github.com/"] {
 body > h1:first-child {
   margin-top: 60px;
 }
-
-body > p:first-child {
-  margin-top: 40px;
-}
-

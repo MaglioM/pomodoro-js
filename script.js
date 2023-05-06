@@ -29,7 +29,7 @@ function getSeconds(time){
 function restartTimer(){
     _tiempoDeTrabajo.innerHTML = "25:00";
     _tiempoDeDescanso.innerHTML = "05:00";
-    _rondas.innerHTML = 3;
+    _rondas.innerHTML = 4;
 }
 
 function controlTime(timeElement, isAdding){//if it is not adding, it is subtracting
