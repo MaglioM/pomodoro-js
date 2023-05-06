@@ -1,0 +1,86 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  color: #f3e5b1; /* Beige más amarillento */
+  background-color: #0f1c28;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 40px;
+}
+
+p {
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+a {
+  font-size: 24px;
+  color: #f3e5b1; /* Beige más amarillento */
+  text-decoration: none;
+}
+
+label {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* Estilos del encabezado */
+header {
+  background-color: #0f1c28;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+header a {
+  background-color: #123152;
+  color: #f3e5b1; /* Beige más amarillento */
+  border: none;
+  padding: 15px 30px;
+  font-size: 24px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Estilos de los botones */
+button {
+  background-color: #123152;
+  color: #f3e5b1; /* Beige más amarillento */
+  border: none;
+  padding: 20px 40px;
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Estilos de los botones de control de tiempo */
+.btnControlTime {
+  font-size: 24px;
+  padding: 15px 30px;
+}
+
+/* Estilos del enlace al código del proyecto */
+a[href^="https://github.com/"] {
+  color: #f3e5b1; /* Beige más amarillento */
+}
+
+/* Estilos específicos de la página "Pomodoro" */
+#btnRestart {
+  margin-top: 30px;
+}
+
+/* Estilos específicos de la página "Sobre" */
+body > h1:first-child {
+  margin-top: 60px;
+}
+
+body > p:first-child {
+  margin-top: 40px;
+}
+

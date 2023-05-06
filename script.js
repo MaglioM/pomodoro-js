@@ -1,4 +1,5 @@
 let running = false;
+
 const _btnComenzar = document.getElementById("btnComenzar");
 const _btnDetener = document.getElementById("btnDetener");
 const _btnRestart = document.getElementById("btnRestart");
@@ -6,6 +7,8 @@ const _btnsControlTime = document.getElementsByClassName("btnControlTime");
 const _tiempoDeTrabajo = document.getElementById("tiempoDeTrabajo");
 const _tiempoDeDescanso = document.getElementById("tiempoDeDescanso");
 const _rondas = document.getElementById("rondas");
+
+const bellSound = new Audio("src/bell.mp3");
 
 function sleep(ms){
     return new Promise(resolve => setTimeout(resolve,ms));
@@ -24,7 +27,7 @@ function getSeconds(time){
 }
 
 function restartTimer(){
-    _tiempoDeTrabajo.innerHTML = "20:00";
+    _tiempoDeTrabajo.innerHTML = "25:00";
     _tiempoDeDescanso.innerHTML = "05:00";
     _rondas.innerHTML = 3;
 }
@@ -63,18 +66,24 @@ async function startTimer(){
     let tiempoRestante;
     switchButtons();
     running = true;
-    for (ronda = 0; ronda < rondas; ronda++){
+    for (i = 0; i < rondas; i++){
         tiempoRestante = tiempoDeTrabajo;
         while (tiempoRestante >= 0 && running){//Working time starts
             _tiempoDeTrabajo.innerHTML = formatTime(tiempoRestante);
             await sleep(1000);
             tiempoRestante -= 1;
         }
+        if (running){
+            bellSound.play();
+        }
         tiempoRestante = tiempoDeDescanso;
         while (tiempoRestante >= 0 && running){//Resting time starts
             _tiempoDeDescanso.innerHTML = formatTime(tiempoRestante);
             await sleep(1000);
             tiempoRestante-= 1;
+        }
+        if (running){
+            bellSound.play();
         }
         _rondas.innerHTML -= 1;
     }
@@ -85,5 +94,6 @@ async function startTimer(){
 
 function stopTimer(){
     switchButtons();
+    restartTimer();
     running = false;
 }
